@@ -1,26 +1,33 @@
 package com.example.us285899.Simpleweatherapp.ui;
+
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.us285899.Simpleweatherapp.R;
-import com.example.us285899.Simpleweatherapp.utils.Constants;
 
 public class HomeActivity extends AppCompatActivity {
     private Handler mHandler = new Handler();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_home);
-        mHandler.postDelayed(new Runnable() {
-            @Override
+        Thread splashTimer = new Thread() {
             public void run() {
-                Intent intent = new Intent(HomeActivity.this, MainWeatherActivity.class);
-                HomeActivity.this.startActivity(intent);
-                HomeActivity.this.finish();
+                try {
+                    sleep(3000);
+                    startActivity(new Intent(HomeActivity.this, MainWeatherActivity.class));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    finish();
+                }
             }
-        }, Constants.SPLASH_DISPLAY_TIME);
+        };
+        splashTimer.start();
     }
 
     @Override

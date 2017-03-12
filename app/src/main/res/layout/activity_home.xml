@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorbg"
+    android:background="@color/colorAccent"
     tools:context="com.example.us285899.Simpleweatherapp.ui.HomeActivity">
 
     <TextView
@@ -10,5 +10,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/welcome"
+        android:textColor="@color/colorhome"
         />
 </FrameLayout>
